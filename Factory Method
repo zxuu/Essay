@@ -1,0 +1,81 @@
+```java
+
+
+public interface Food {
+    /*
+     * 获得相应的食物
+     */
+    public void get();
+}
+
+/*
+ * 麦香鸡对抽象产品接口的实现
+ */
+public class McChicken implements Food{
+    /*
+     * 获取一份麦香鸡
+     */
+    public void get(){
+        System.out.println("我要一份麦香鸡");
+    }
+}
+
+
+
+
+/*
+ * 薯条对抽象产品接口的实现
+ */
+public class Chips implements Food{
+    /*
+     * 获取一份薯条
+     */
+    public void get(){
+        System.out.println("我要一份薯条");
+    }
+}
+
+//食品加工厂
+public class FoodFactory {
+ 
+    public static Food getFood(String type) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+        if(type.equalsIgnoreCase("mcchicken")) {
+            return McChicken.class.newInstance();
+ 
+        } else if(type.equalsIgnoreCase("chips")) {
+            return Chips.class.newInstance();
+        } else {
+            System.out.println("哎呀！找不到相应的实例化类啦！");
+            return null;
+        }
+ 
+ 
+    }
+}
+
+
+/*
+ * 测试客户端
+ */
+public class SimpleFactoryTest {
+    public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+ 
+        //实例化各种食物
+        Food mcChicken = FoodFactory.getFood("McChicken");
+        Food chips = FoodFactory.getFood("Chips");
+        Food eggs = FoodFactory.getFood("Eggs");
+ 
+        //获取食物
+        if(mcChicken!=null){
+            mcChicken.get();
+        }
+        if(chips!=null){
+            chips.get();
+        }
+        if(eggs!=null){
+            eggs.get();
+        }
+ 
+ 
+    }
+}
