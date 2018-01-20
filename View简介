@@ -1,0 +1,6 @@
+    View是Android中所有控件的基类，不管是简单的Button和TextView还是复杂的RelativeLayout和ListView,它们的共同基类都是View。所以说，View是一种界面层
+的控件的一种抽象，它代表了一个控件。
+    除了View，还有ViewGroup,从名字来看，它可以被翻译为控件组，言外之意是ViewGroup内部包含了许多个控件，即一组View。在Android的设计中，ViewGroup也继
+承了View,这就意味着View本身就可以是单个控件也可以是由多个控件组成的一组控件，通过这种关系就形成了View树的结构，这和Web前端中的DOM树的概念是相似的。
+根据这个概念，我们知道，Button显然是个View,而LinearLayout不但是一个View而且还是一个ViewGroup，而ViewGroup内部是可以有子View的，这个子View同样还可以
+是ViewGroup，依此类推。明白View的这种层级关系有助于理解View 的工作机制
